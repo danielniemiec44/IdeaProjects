@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="DayNightVoting">
+    <output-path>$PROJECT_DIR$/out/artifacts/DayNightVoting</output-path>
+    <root id="archive" name="DayNightVoting.jar">
+      <element id="module-output" name="DayNightVoting" />
+    </root>
+  </artifact>
+</component>

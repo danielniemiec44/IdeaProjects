@@ -1,0 +1,6 @@
+name: ActivityStatistics
+main: masarniamc.activitystatistics.Main
+version: 1.0
+author: DeeRave
+description: Server's activity statistics.
+api-version: 1.15

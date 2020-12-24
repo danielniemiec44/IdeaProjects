@@ -1,0 +1,7 @@
+open p34.titanaxe.com
+srv93548
+xDJ7ZHtR
+cd plugins
+binary
+send out/artifacts/icraftplotdevelopplatform_jar/icraftplotdevelopplatform.jar
+quit

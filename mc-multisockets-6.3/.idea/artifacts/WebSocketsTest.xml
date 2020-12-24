@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="WebSocketsTest">
+    <output-path>$PROJECT_DIR$/out/artifacts/WebSocketsTest</output-path>
+    <root id="archive" name="WebSocketsTest.jar">
+      <element id="module-output" name="mc-multisockets.main" />
+    </root>
+  </artifact>
+</component>

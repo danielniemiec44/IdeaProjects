@@ -1,0 +1,11 @@
+name: ChatChannels
+main: masarniamc.chatchannels.Main
+version: 1.0
+author: DeeRave
+description: Chat channels.
+api-version: 1.15
+commands:
+  channel:
+    description: Podstawowa komenda MagicMasarnia.
+    aliases: [c]
+    usage: Wpisz /channel lub /c aby wyswitlic strone pomocy.

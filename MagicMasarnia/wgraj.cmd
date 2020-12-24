@@ -1,0 +1,1 @@
+copy "C:\Users\danie\IdeaProjects\MagicMasarnia\out\artifacts\MagicMasarnia" "C:\Server\plugins"

@@ -1,0 +1,6 @@
+name: Auth
+main: masarniamc.auth.Main
+version: 1.0
+author: DeeRave
+description: Server's Auth plugin.
+api-version: 1.15

@@ -1,0 +1,7 @@
+name: CraftserveAgent
+author: Craftserve
+version: 20200515-1100
+description: Agent plugin for servers hosted on Craftserve
+main: pl.craftserve.agent.AgentPlugin
+website: 'https://craftserve.pl'
+load: startup

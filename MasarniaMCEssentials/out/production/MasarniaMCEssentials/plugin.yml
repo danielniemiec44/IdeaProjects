@@ -1,0 +1,13 @@
+main: pl.masarniamc.essentials.Main
+name: MasarniaMCEssentials
+version: 1.0
+author: DeeRave
+description: Komendy i podstawowe funkcje serwera.
+api-version: 1.15
+commands:
+  discord:
+    description: Wyswietla zaproszenie do discorda serwerowego.
+    usage: "Poprawne uzycie: /discord"
+  naszastrona:
+    description: Wyswietla serwerowa strone www.
+    usage: "Poprawne uzycie: /www"

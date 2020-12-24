@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="MagicMasarnia">
+    <output-path>$PROJECT_DIR$/out/artifacts/MagicMasarnia</output-path>
+    <root id="archive" name="MagicMasarnia.jar">
+      <element id="module-output" name="MagicMasarnia" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Auth">
+    <output-path>$PROJECT_DIR$/out/artifacts/Auth</output-path>
+    <root id="archive" name="Auth.jar">
+      <element id="module-output" name="Auth" />
+    </root>
+  </artifact>
+</component>

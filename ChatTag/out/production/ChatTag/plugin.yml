@@ -1,0 +1,6 @@
+name: ChatTag
+main: masarniamc.chattag.Main
+version: 1.0
+author: DeeRave
+description: Tags players on chat.
+api-version: 1.15

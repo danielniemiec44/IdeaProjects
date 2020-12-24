@@ -1,0 +1,6 @@
+name: Library
+main: masarniamc.sqllibrary.Main
+version: 1.0
+author: DeeRave
+description: Server's SQLLibrary.
+api-version: 1.15

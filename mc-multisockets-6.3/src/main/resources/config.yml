@@ -1,0 +1,10 @@
+sockets:
+  "mysocket":
+    port: 25590
+    connections:
+      "factions":
+        host: localhost
+        port: 25591
+      "hub":
+        host: localhost
+        port: 25592

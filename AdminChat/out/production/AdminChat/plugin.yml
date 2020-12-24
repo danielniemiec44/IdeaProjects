@@ -1,0 +1,10 @@
+name: AdminChat
+main: masarniamc.adminchat.Main
+version: 1.0
+author: DeeRave
+description: AdminChat.
+api-version: 1.15
+commands:
+  adminchat:
+    description: Podstawowa komenda AdminChat.
+    usage: Wpisz /adminchat aby wyswitlic strone pomocy.

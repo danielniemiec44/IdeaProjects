@@ -1,0 +1,6 @@
+main: pl.masarniamc.serverquery.Main
+name: ServerQuery
+version: 1.0
+author: DeeRave
+description: Plugin tworzy WebSocket dzieki ktoremu mozna komunikowac sie z serwerem
+api-version: 1.15

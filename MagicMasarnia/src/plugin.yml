@@ -1,0 +1,11 @@
+name: MagicMasarnia
+main: masarniamc.magicmasarnia.Main
+version: 1.0
+author: DeeRave
+description: Masarnia author's Magic Plugin.
+api-version: 1.15
+commands:
+  magicmasarnia:
+    description: Podstawowa komenda MagicMasarnia.
+    aliases: [mm]
+    usage: Wpisz /magicmasarnia lub /mm aby wyswitlic strone pomocy.

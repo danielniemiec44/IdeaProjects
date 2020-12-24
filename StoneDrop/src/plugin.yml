@@ -1,0 +1,10 @@
+name: StoneDrop
+main: masarniamc.stonedrop.Main
+version: 1.0
+author: DeeRave
+description: Drop from stone.
+api-version: 1.15
+commands:
+  drop:
+    description: Pokazuje aktualny drop ze stone.
+    usage: Zła składnia!

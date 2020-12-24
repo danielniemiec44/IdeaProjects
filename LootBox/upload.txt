@@ -1,0 +1,7 @@
+open masarniamc.pl
+root
+gTWhYRwxxGKbUnhUlqkzFHdG
+cd /opt/instances/masarniamc/plugins
+binary
+send out/artifacts/Cobblex.jar
+quit

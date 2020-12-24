@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ServerQuery">
+    <output-path>$PROJECT_DIR$/out/artifacts/ServerQuery</output-path>
+    <root id="archive" name="ServerQuery.jar">
+      <element id="module-output" name="ServerQuery" />
+    </root>
+  </artifact>
+</component>

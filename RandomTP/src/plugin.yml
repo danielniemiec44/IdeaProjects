@@ -1,0 +1,10 @@
+main: pl.masarniamc.randomtp.Main
+name: RandomTP
+version: 1.0
+author: DeeRave
+description: RandomTP
+api-version: 1.15
+commands:
+  randomtp:
+    description: Komenda RandomTP
+    usage: "Poprawne uzycie: /randomtp"

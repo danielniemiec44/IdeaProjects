@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SQLLibrary">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../Biblioteki serwerowe Minecraft/SQLLibrary.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

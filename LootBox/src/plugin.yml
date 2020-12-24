@@ -1,0 +1,10 @@
+main: pl.masarniamc.lootbox.Main
+name: LootBox
+version: 1.0
+author: DeeRave
+description: Plugin na lootboxy
+api-version: 1.15
+commands:
+  lootbox:
+    description: Wyswietla menu kupna lootboxow.
+    usage: "Poprawne uzycie: /lootbox"

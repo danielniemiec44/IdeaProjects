@@ -1,0 +1,13 @@
+main: pl.masarniamc.daynightvoting.Main
+name: DayNightVoting
+version: 1.0
+author: DeeRave
+description: DayNightVoting
+api-version: 1.15
+commands:
+  dzien:
+    description: Komenda na glosowanie na dzien
+    usage: "Poprawne uzycie: /dzien"
+  noc:
+    description: Komenda na glosowanie na noc
+    usage: "Poprawne uzycie: /noc"

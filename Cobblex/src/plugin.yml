@@ -1,0 +1,10 @@
+main: pl.masarniamc.cobblex.Main
+name: Cobblex
+version: 1.0
+author: DeeRave
+description: Plugin na cobblex
+api-version: 1.15
+commands:
+  cobblex:
+    description: Komenda na cobblex.
+    usage: "Poprawne uzycie: /cobblex"

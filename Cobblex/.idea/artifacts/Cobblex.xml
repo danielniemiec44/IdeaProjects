@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Cobblex">
+    <output-path>$PROJECT_DIR$/out/artifacts/Cobblex</output-path>
+    <root id="archive" name="Cobblex.jar">
+      <element id="module-output" name="Cobblex" />
+    </root>
+  </artifact>
+</component>
