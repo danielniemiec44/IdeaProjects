@@ -26,14 +26,17 @@ import java.security.MessageDigest;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 public class Main extends JavaPlugin implements Listener {
 
     public static ArrayList<UUID> unLoggedPlayers = new ArrayList<>();
     public static HashMap<UUID, String> waitingToConfirmPassword = new HashMap<>();
+    public static HashMap<UUID, String> passwords = new HashMap<>();
     public PluginManager pm = this.getServer().getPluginManager();
     public static String url = "jdbc:mysql://localhost/masarniamc?useSSL=false";
     public static String username = "root";
@@ -45,6 +48,7 @@ public class Main extends JavaPlugin implements Listener {
         super.onEnable();
         pm.registerEvents(this, this);
     }
+    
 
             @EventHandler(priority = EventPriority.MONITOR)
             public void onJoin(PlayerJoinEvent e) throws SQLException {
@@ -82,6 +86,7 @@ public class Main extends JavaPlugin implements Listener {
                                 new Title("", Title.Type.TITLE, 0, 1, 0).show(p);
                                 new Title("", Title.Type.SUBTITLE, 0, 1, 0).show(p);
                                 unLoggedPlayers.remove(p.getUniqueId());
+                                passwords.put(p.getUniqueId(), pass);
                                 p.sendMessage("Zalogowano.");
                                 changeGamemode(p,GameMode.SURVIVAL);
                             } else {
@@ -101,6 +106,8 @@ public class Main extends JavaPlugin implements Listener {
                                     new Title("", Title.Type.TITLE, 0, 1, 0).show(p);
                                     new Title("", Title.Type.SUBTITLE, 0, 1, 0).show(p);
                                     unLoggedPlayers.remove(p.getUniqueId());
+                                    waitingToConfirmPassword.remove(p.getUniqueId());
+                                    passwords.put(p.getUniqueId(), pass);
                                     p.sendMessage("Zarejestrowano!");
                                     changeGamemode(p,GameMode.SURVIVAL);
 
@@ -109,6 +116,16 @@ public class Main extends JavaPlugin implements Listener {
                         }
                         conn.close();
                         e.setCancelled(true);
+                    } else {
+                        if(passwords.containsKey(p.getUniqueId())) {
+                            if (Arrays.stream(e.getMessage().split(" ")).anyMatch(s -> {
+                                return passwords.get(p.getUniqueId()).equals(s);
+                            })) {
+                            p.sendMessage("Nie podawaj swojego hasla na czacie!");
+                            e.setCancelled(true);
+                            }
+
+                        }
                     }
                 } catch (Exception exception){
                     exception.printStackTrace();
@@ -118,12 +135,7 @@ public class Main extends JavaPlugin implements Listener {
             }
 
             public void changeGamemode(Player p, GameMode gm){
-        Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-            @Override
-            public void run() {
-                p.setGameMode(gm);
-            }
-        }, 0L);
+                Bukkit.getScheduler().scheduleSyncDelayedTask(this, () -> p.setGameMode(gm), 0L);
             }
 
             @EventHandler
