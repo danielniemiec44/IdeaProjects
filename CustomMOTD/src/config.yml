@@ -1,0 +1,5 @@
+motd:
+  - This is custom MOTD
+profiles:
+  - This is custom profile
+icon: WWW address to the icon

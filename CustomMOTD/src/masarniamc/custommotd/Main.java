@@ -9,6 +9,7 @@ import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.wrappers.WrappedGameProfile;
 import com.comphenix.protocol.wrappers.WrappedServerPing;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.craftbukkit.libs.org.apache.commons.io.output.ByteArrayOutputStream;
@@ -19,6 +20,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 
 public class Main extends JavaPlugin {
@@ -28,7 +31,9 @@ public class Main extends JavaPlugin {
     public void onEnable(){
         super.onEnable();
 
-
+        FileConfiguration config = getConfig();
+        config.options().copyDefaults(true);
+        saveConfig();
 
 
 
@@ -42,23 +47,21 @@ public class Main extends JavaPlugin {
                         public void onPacketSending(PacketEvent e) {
                             if (e.getPacketType() == PacketType.Status.Server.SERVER_INFO) {
                                 WrappedServerPing ping = (WrappedServerPing) e.getPacket().getServerPings().read(0);
-                                ArrayList<WrappedGameProfile> desc = new ArrayList<>();
-                                desc.add(new WrappedGameProfile(UUID.randomUUID(), "§eMasarniaMC.pl"));
-                                desc.add(new WrappedGameProfile(UUID.randomUUID(), "§ePolski serwer FreeBuild"));
-                                desc.add(new WrappedGameProfile(UUID.randomUUID(), "§eGracze online: " + Bukkit.getOnlinePlayers().size()));
-                                //desc.add(new WrappedGameProfile(UUID.randomUUID(), ""));
-                                //desc.add(new WrappedGameProfile(UUID.randomUUID(), "§o§8Sky-Block zostanie dodany w przyszlosci"));
-                                ping.setPlayers(desc);
-                                String[] motd = new String[2];
-                                motd[0] = "§6MasarniaMC.pl§r";
-                                motd[1] = "§eOficjalne otwarcie serwera >> §n24.11.2020";
 
-
+                                List<String> motd = config.getStringList("motd");
                                 ping.setMotD(String.join("\n", motd));
 
 
+                                LinkedList<WrappedGameProfile> profiles = new LinkedList<WrappedGameProfile>();
+                                List<String> stringProfiles = config.getStringList("profiles");
+                                for(String profile : stringProfiles) {
+                                    profiles.add(new WrappedGameProfile(UUID.randomUUID(), profile));
+                                }
+                                ping.setPlayers(profiles);
+
+
                                 try {
-                                    URL url = new URL("http://masarniamc.pl/logo.png");
+                                    URL url = new URL(config.getString("icon"));
                                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
                                     ImageIO.write(ImageIO.read(url), "png", bos);
                                     byte[] data = bos.toByteArray();
