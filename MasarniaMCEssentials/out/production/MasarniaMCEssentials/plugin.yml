@@ -3,7 +3,7 @@ name: MasarniaMCEssentials
 version: 1.0
 author: DeeRave
 description: Komendy i podstawowe funkcje serwera.
-api-version: 1.15
+api-version: 1.16
 commands:
   discord:
     description: Wyswietla zaproszenie do discorda serwerowego.

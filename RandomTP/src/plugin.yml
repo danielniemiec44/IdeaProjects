@@ -3,7 +3,7 @@ name: RandomTP
 version: 1.0
 author: DeeRave
 description: RandomTP
-api-version: 1.15
+api-version: 1.16
 commands:
   randomtp:
     description: Komenda RandomTP

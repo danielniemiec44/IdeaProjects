@@ -3,6 +3,7 @@ package pl.masarniamc.randomtp;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,12 +16,18 @@ import java.util.logging.Logger;
 public class Main extends JavaPlugin implements CommandExecutor {
     public static Logger console;
     public static HashMap<Player, Long> lastUse = new HashMap<Player, Long>();
-    public static int cooldown = 600;
+    public static int cooldown;
+    FileConfiguration config = getConfig();
+    String world = "";
 
     @Override
     public void onEnable() {
         super.onEnable();
 
+        config.options().copyDefaults(true);
+        saveConfig();
+        world = config.getString("world");
+        cooldown = config.getInt("cooldown");
     }
 
     @Override
@@ -109,7 +116,7 @@ public class Main extends JavaPlugin implements CommandExecutor {
                 Long remaining = (lastUse.get(p) + cooldown) - now;
                 if(now < lastUse.get(p) + cooldown){
                     if(p.hasPermission("randomtp.bypass")){
-                        p.sendMessage("Powienes zaczekac jeszcze " + secondsToString(remaining) + ", lecz masz uprawnienie do omijania ograniczenia czasowego!");
+                        p.sendMessage("Powinienes zaczekac jeszcze " + secondsToString(remaining) + ", lecz masz uprawnienie do omijania ograniczenia czasowego!");
                     } else {
                         p.sendMessage("Musisz zaczekać jeszcze " + secondsToString(remaining) + " zanim będziesz mógł użyć ponownie tej komendy!");
                         return true;
@@ -118,7 +125,7 @@ public class Main extends JavaPlugin implements CommandExecutor {
             }
 
             lastUse.put(p, now);
-            RandomTP.teleportRandomly(p, "spawn");
+            RandomTP.teleportRandomly(p, world);
         }
 
         return true;

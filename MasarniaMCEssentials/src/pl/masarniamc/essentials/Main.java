@@ -5,6 +5,7 @@ import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -25,6 +26,9 @@ import java.util.logging.Logger;
 public class Main extends JavaPlugin implements CommandExecutor, Listener {
     static Logger console;
     //public static LinkedHashMap<Material, Integer> drop = new LinkedHashMap<>();
+    FileConfiguration config = getConfig();
+    String discord = "";
+    String website = "";
 
     @Override
     public void onEnable() {
@@ -33,9 +37,15 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 
         //Bukkit.getLogger().addHandler(new ConsoleHandler());
 
-        org.apache.logging.log4j.core.Logger logger = (org.apache.logging.log4j.core.Logger) LogManager.getRootLogger();
-        logger.addAppender(new LogAppender());
+        //org.apache.logging.log4j.core.Logger logger = (org.apache.logging.log4j.core.Logger) LogManager.getRootLogger();
+        //logger.addAppender(new LogAppender());
 
+
+        config.options().copyDefaults(true);
+        saveConfig();
+
+        discord = config.getString("discord");
+        website = config.getString("website");
     }
 
     @Override
@@ -57,7 +67,7 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
                 return false;
             }
             Player p = (Player) sender;
-            p.sendMessage(ChatColor.RED + "\nDiscord serwerowy: " + ChatColor.DARK_RED + ChatColor.BOLD + "discord.gg/CMczurwtqE\n ");
+            p.sendMessage(ChatColor.RED + "\nDiscord serwerowy: " + ChatColor.DARK_RED + ChatColor.BOLD + discord + "\n ");
         }
 
         //Komenda nasza strona
@@ -66,7 +76,7 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
                 return false;
             }
             Player p = (Player) sender;
-            p.sendMessage(ChatColor.RED + "\nNasza strona: " + ChatColor.DARK_RED + ChatColor.BOLD + "masarniamc.pl\n ");
+            p.sendMessage(ChatColor.RED + "\nNasza strona: " + ChatColor.DARK_RED + ChatColor.BOLD + website + "\n ");
         }
 
         return true;
@@ -122,7 +132,7 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 
 
 
-
+/*
     //Gracze nie moga spasc ze spawnu i dostaja obrazen
     @EventHandler
     public void onFall(PlayerMoveEvent e) {
@@ -134,6 +144,11 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
         }
     }
 
+ */
+
+
+
+    /*
     @EventHandler
     public void cancelHurt(EntityDamageEvent e) {
         Entity entity = e.getEntity();
@@ -141,6 +156,8 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
             e.setCancelled(true);
         }
     }
+
+     */
 
 
 
