@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="RandomTP">
+    <output-path>$PROJECT_DIR$/out/artifacts/RandomTP</output-path>
+    <root id="archive" name="RandomTP.jar">
+      <element id="module-output" name="RandomTP" />
+    </root>
+  </artifact>
+</component>

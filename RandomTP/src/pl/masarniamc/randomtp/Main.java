@@ -109,7 +109,7 @@ public class Main extends JavaPlugin implements CommandExecutor {
             return false;
         }
 
-        if(label.equalsIgnoreCase("randomtp")) {
+        if(label.equalsIgnoreCase("randomtp") || label.equalsIgnoreCase("rtp")) {
             Player p = (Player) sender;
             long now = Instant.now().getEpochSecond();
             if(lastUse.containsKey(p)){

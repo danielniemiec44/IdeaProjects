@@ -1,0 +1,11 @@
+main: pl.masarniamc.cuboids.Main
+name: Cuboids
+version: 1.0
+author: DeeRave
+description: Cuboids.
+api-version: 1.16
+commands:
+  guild:
+    description: Basic guild command.
+    usage: "Correct usage: /guild"
+    aliases: g

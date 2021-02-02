@@ -5,6 +5,7 @@ import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,17 +27,30 @@ import java.util.logging.Logger;
 
 public class Main extends JavaPlugin implements CommandExecutor, Listener {
     public static Logger console;
-    public static String displayname = ChatColor.RESET + "Cobblex";
     public static LinkedHashMap<Material, Integer> drop = new LinkedHashMap<>();
+    FileConfiguration config = getConfig();
 
     @Override
     public void onEnable() {
         super.onEnable();
         Bukkit.getPluginManager().registerEvents(this, this);
 
+        config.options().copyDefaults(true);
+        saveConfig();
+
+
+        for(String d : config.getConfigurationSection("drop").getKeys(true)){
+            drop.put(Material.valueOf(d.toUpperCase()), config.getInt("drop." + d));
+            //getLogger().info(Material.valueOf(d.toUpperCase()).toString() + " - " + config.getInt("drop." + d));
+        }
+
+
+        /*
         drop.put(Material.DIAMOND, 25);
         drop.put(Material.GOLD_INGOT, 50);
         drop.put(Material.IRON_INGOT, 100);
+
+         */
     }
 
     @Override
@@ -81,8 +95,8 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
             p.sendMessage("Stworzyłeś cobblexa!");
             ItemStack cobblex = new ItemStack(Material.COBBLESTONE);
             ItemMeta itemMeta = cobblex.getItemMeta();
-            itemMeta.setDisplayName(displayname);
-            itemMeta.addEnchant(Enchantment.ARROW_INFINITE, 10, true);
+            itemMeta.setDisplayName(ChatColor.RESET + "Cobblex");
+            itemMeta.addEnchant(Enchantment.DURABILITY, 10, true);
             cobblex.setItemMeta(itemMeta);
             inv.addItem(cobblex);
         }
@@ -94,7 +108,8 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 
     @EventHandler
     public void onCobblexPlace(BlockPlaceEvent e) {
-        if(e.getItemInHand().getItemMeta().getDisplayName().equals(displayname)){
+        ItemMeta itemMeta = e.getItemInHand().getItemMeta();
+        if(itemMeta.hasEnchant(Enchantment.DURABILITY) && itemMeta.getDisplayName().equals("Cobblex")){
             Block block = e.getBlock();
             Location centerOfBlock = block.getLocation().add(0.5, 0.5, 0.5);
             block.setType(Material.AIR);

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Cuboids">
+    <output-path>$PROJECT_DIR$/out/artifacts/Cuboids</output-path>
+    <root id="archive" name="Cuboids.jar">
+      <element id="module-output" name="Cuboids" />
+    </root>
+  </artifact>
+</component>

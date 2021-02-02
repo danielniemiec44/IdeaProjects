@@ -8,6 +8,7 @@ commands:
   discord:
     description: Wyswietla zaproszenie do discorda serwerowego.
     usage: "Poprawne uzycie: /discord"
-  naszastrona:
+  website:
     description: Wyswietla serwerowa strone www.
     usage: "Poprawne uzycie: /www"
+    aliases: www

@@ -1,0 +1,7 @@
+world: world
+spawn-size: 500
+cost: 10
+size: 50
+increase-cost: 1
+increase-size: 10
+teleport-time: 5

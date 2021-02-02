@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -28,6 +29,7 @@ public class Main extends JavaPlugin implements CommandExecutor,Listener {
     public static LinkedHashMap<Material, Integer> drop = new LinkedHashMap<>();
     int lower = 0;
     int upper = 1;
+    FileConfiguration config = getConfig();
 
         public int getRandom(int lower, int upper) {
             Random random = new Random();
@@ -40,6 +42,19 @@ public class Main extends JavaPlugin implements CommandExecutor,Listener {
     public void onEnable(){
         super.onEnable();
         Bukkit.getPluginManager().registerEvents(this, this);
+
+        config.options().copyDefaults(true);
+        saveConfig();
+
+
+        for(String d : config.getConfigurationSection("drop").getKeys(true)){
+            drop.put(Material.valueOf(d.toUpperCase()), config.getInt("drop." + d));
+            //getLogger().info(Material.valueOf(d.toUpperCase()).toString() + " - " + config.getInt("drop." + d));
+        }
+
+
+
+        /*
         drop.put(Material.DIAMOND, 1);
         drop.put(Material.LAPIS_LAZULI, 2);
         drop.put(Material.GOLD_INGOT, 5);
@@ -47,6 +62,8 @@ public class Main extends JavaPlugin implements CommandExecutor,Listener {
         drop.put(Material.IRON_INGOT, 10);
         drop.put(Material.COAL, 20);
         drop.put(Material.COBBLESTONE, 100);
+        */
+
 
     }
 

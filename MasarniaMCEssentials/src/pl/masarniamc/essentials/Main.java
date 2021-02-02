@@ -29,6 +29,7 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
     FileConfiguration config = getConfig();
     String discord = "";
     String website = "";
+    String parkourWorld = config.getString("parkour-world");
 
     @Override
     public void onEnable() {
@@ -67,16 +68,16 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
                 return false;
             }
             Player p = (Player) sender;
-            p.sendMessage(ChatColor.RED + "\nDiscord serwerowy: " + ChatColor.DARK_RED + ChatColor.BOLD + discord + "\n ");
+            p.sendMessage(ChatColor.RED + "\nClick on this link to join our discord server: " + ChatColor.DARK_RED + ChatColor.BOLD + discord + "\n ");
         }
 
         //Komenda nasza strona
-        if(label.equalsIgnoreCase("naszastrona")){
+        if(label.equalsIgnoreCase("website") || label.equalsIgnoreCase("www")){
             if(args.length > 0){
                 return false;
             }
             Player p = (Player) sender;
-            p.sendMessage(ChatColor.RED + "\nNasza strona: " + ChatColor.DARK_RED + ChatColor.BOLD + website + "\n ");
+            p.sendMessage(ChatColor.RED + "\nClick on this link to show our website: " + ChatColor.DARK_RED + ChatColor.BOLD + website + "\n ");
         }
 
         return true;
@@ -120,7 +121,7 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
         List<Item> items = e.getItems();
         for(Item item : items){
             inv.addItem(item.getItemStack());
-            items.remove(item);
+            //items.remove(item);
         }
         e.setCancelled(true);
     }
@@ -132,32 +133,31 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 
 
 
-/*
-    //Gracze nie moga spasc ze spawnu i dostaja obrazen
+
+    //Gracze nie moga spasc z parkoura i nie dostaja obrazen
     @EventHandler
     public void onFall(PlayerMoveEvent e) {
         Location to = e.getTo();
         if(to.getY() < 0) {
-            if (to.getWorld().getName().equalsIgnoreCase("spawn")) {
-                e.getPlayer().teleport(to.getWorld().getSpawnLocation());
+            if (to.getWorld().getName().equalsIgnoreCase(parkourWorld)) {
+                Location loc = to.getWorld().getSpawnLocation();
+                loc = new Location(loc.getWorld(), loc.getX() + 0.5, loc.getY(), loc.getZ() + 0.5);
+                loc.setYaw(90);
+                loc.setPitch(0);
+                e.getPlayer().teleport(loc);
+
             }
         }
     }
 
- */
-
-
-
-    /*
     @EventHandler
     public void cancelHurt(EntityDamageEvent e) {
         Entity entity = e.getEntity();
-        if(entity.getLocation().getWorld().getName().equalsIgnoreCase("spawn") && entity instanceof Player){
+        if(entity.getLocation().getWorld().getName().equalsIgnoreCase(parkourWorld) && entity instanceof Player){
             e.setCancelled(true);
         }
     }
 
-     */
 
 
 

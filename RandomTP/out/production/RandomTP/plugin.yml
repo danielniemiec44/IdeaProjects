@@ -8,3 +8,4 @@ commands:
   randomtp:
     description: Komenda RandomTP
     usage: "Poprawne uzycie: /randomtp"
+    aliases: rtp
